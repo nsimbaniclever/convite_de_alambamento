@@ -1,0 +1,711 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../IMG_3722.JPG");
+    background-repeat: repeat;
+    opacity: 0.3; /* 30% visível - ajuste conforme necessário */
+    z-index: -1;
+}
+
+/* ===== BACKGROUND COM EMOJIS ===== */
+.floating-emojis {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 30px;
+    animation: floatUp 10s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Título */
+.main-title {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 64px;
+    color: #231b03;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #1e1805;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+}
+
+/* ===== GRID DOS 3 BLOCOS ===== */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #d4af37, #f0d060, #d4af37);
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.container-svg {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-svg svg {
+    width: 100%;
+    height: 100%;
+}
+
+.event-icon{
+    width: 50px;              
+    height: 30px;             
+    font-size: 40px;          
+    margin: 0px auto
+}
+
+.event-title {
+    font-family: "Quintessential", serif;
+    font-size: 32px;
+    color: #2d3748;
+    margin: 50px 0px 8px 0px;
+    font-weight: 700;
+}
+
+.event-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #c0392b;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Contador de dias com animação */
+.countdown-box {
+    background: linear-gradient(135deg, #d4af37, #f0d060);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.countdown-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #1a1a2e;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.countdown-days {
+    font-size: 56px;
+    font-weight: 700;
+    color: #1a1a2e;
+    display: inline-block;
+    animation: slideFromRight 1s ease-out;
+}
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.countdown-unit {
+    font-size: 16px;
+    color: #1a1a2e;
+    font-weight: 600;
+}
+
+/* Relógio regressivo */
+.countdown-clock {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+}
+
+.clock-item {
+    background: linear-gradient(135deg, #2d3748, #1a1a2e);
+    color: #d4af37;
+    padding: 10px 15px;
+    border-radius: 8px;
+    min-width: 60px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.clock-value {
+    font-size: 28px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+}
+
+.clock-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-top: 4px;
+    display: block;
+}
+
+.event-message {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.event-location {
+    background: rgba(212, 175, 55, 0.1);
+    border-left: 3px solid #d4af37;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+}
+
+.event-location strong {
+    color: #2d3748;
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Botão Confirmar */
+.btn-confirm {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 16px 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(145deg, #d4af37, #b8941f);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    font-weight: 600;
+}
+
+.btn-confirm:hover {
+    background: linear-gradient(145deg, #e5c046, #c9a82f);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    transform: translateY(-3px);
+}
+
+/* ===== MODAL DO FORMULÁRIO ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.5s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Lado esquerdo - Formulário */
+.modal-form-side {
+    padding: 50px 40px;
+    background: linear-gradient(180deg, #fffef9 0%, #fdf8ee 100%);
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.modal-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    color: #8b6914;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modal-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-group label .required {
+    color: #c0392b;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px 15px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.radio-option:hover {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.radio-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #d4af37;
+}
+
+.radio-option span {
+    font-size: 15px;
+    color: #555;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(145deg, #d4af37, #b8941f);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(145deg, #e5c046, #c9a82f);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Lado direito - Foto e emojis */
+.modal-photo-side {
+    position: relative;
+    background: linear-gradient(135deg, #f2f2f7 0%, #f0f1f5 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-photo-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../IMG_3722.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+}
+
+/* Substitua pela foto real: background-image: url('fotos/casal.jpg'); */
+
+.modal-emojis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.modal-emoji {
+    position: absolute;
+    font-size: 35px;
+    animation: floatUpModal 8s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes floatUpModal {
+    0% {
+        transform: translateY(100%) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100%) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.modal-photo-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: rgb(30, 27, 29);
+    padding: 40px;
+}
+
+.modal-photo-content h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(9, 8, 8, 0.5);
+}
+
+.modal-photo-content p {
+    font-size: 18px;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(90deg);
+}
+
+/* Mensagem de sucesso */
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+.success-message.show {
+    display: block;
+}
+
+#presente{
+    margin-top: 15px; 
+    font-size: 16px; 
+    color: #d4af37;
+}
+.success-icon {
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+
+.success-message h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #2d3748;
+    margin-bottom: 15px;
+}
+
+.success-message p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Spinner */
+.spinner {
+    display: none;
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto;
+}
+
+.spinner.show {
+    display: block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================ */
+/* ===== NOVAS CLASSES PARA CSS INLINE ===== */
+/* ============================================ */
+
+/* Para o parágrafo da confirmação */
+.event-message-large {
+    margin: 25px 0;
+    font-size: 16px;
+}
+
+/* Caixa de informações do bloco 3 */
+.info-box {
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: left;
+}
+
+/* Título da caixa de informações */
+.info-title {
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Lista da caixa de informações */
+.info-list {
+    list-style: none;
+    color: #666;
+    line-height: 2;
+    padding-left: 0;
+}
+
+/* Esconder elemento (usado no acompanhante) */
+.hidden-field {
+    display: none;
+}
+
+/* Botão fechar no modal (margin-top) */
+.btn-modal-close {
+    margin-top: 25px;
+}
+
+/* ============================================ */
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 968px) {
+    .modal {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .modal-photo-side {
+        display: none;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 48px;
+    }
+
+    .countdown-days {
+        font-size: 42px;
+    }
+
+    .clock-value {
+        font-size: 22px;
+    }
+
+    .clock-item {
+        min-width: 50px;
+        padding: 8px 12px;
+    }
+}

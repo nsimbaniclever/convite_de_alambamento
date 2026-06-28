@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Celebração - Casamento</title>
+    <link rel="stylesheet" href="style01.css">
+</head>
+<body>
+    <!-- Emojis flutuantes no background -->
+    <div class="floating-emojis" id="floatingEmojis"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <h1 class="main-title">Nossa Celebração do alambamento</h1>
+        <p class="subtitle">Oséias Manuel Nsimbani ❤️ Teresa Lubongo Manuel</p>
+
+        <!-- Blocos de Eventos -->
+        <div class="events-grid">
+            <!-- Bloco 1: Alambamento -->
+            <div class="event-card">
+                <div class="container-svg">
+                    
+                    <svg viewBox="0 0 100 100">
+                    <defs>
+                    <clipPath id="coracao">
+                        <path d="M50,88 C20,65 0,50 0,35 C0,15 20,5 35,15 L50,30 L65,15 C80,5 100,15 100,35 C100,50 80,65 50,88Z" />
+                    </clipPath>
+                    </defs>
+                    <image 
+                        href="../IMG_3722.JPG" 
+                        x="1" 
+                        y="0" 
+                        width="100" 
+                        height="100" 
+                        clip-path="url(#coracao)"
+                        preserveAspectRatio="xMidYMid slice"/>
+                    <path 
+                        d="M50,88 C20,65 0,50 0,35 C0,15 20,5 35,15 L50,30 L65,15 C80,5 100,15 100,35 C100,50 80,65 50,88Z" 
+                        fill="none" 
+                        stroke="#d4af37" 
+                        stroke-width="2" />
+                    </svg>
+                </div>
+                <h2 class="event-title">Alambamento</h2>
+                <p class="event-date"><strong></strong>18 de Julho de 2026 às 17h30</p>
+
+                <div class="countdown-box">
+                    <div class="countdown-label">Faltam</div>
+                    <span class="countdown-days" id="days-alambamento">0</span>
+                    <div class="countdown-unit">dias</div>
+                </div>
+
+                <div class="countdown-clock" id="clock-alambamento">
+                    <div class="clock-item">
+                        <span class="clock-value" id="hours-alambamento">00</span>
+                        <span class="clock-label">HORAS</span>
+                    </div>
+                    <div class="clock-item">
+                        <span class="clock-value" id="minutes-alambamento">00</span>
+                        <span class="clock-label">MIN</span>
+                    </div>
+                    <div class="clock-item">
+                        <span class="clock-value" id="seconds-alambamento">00</span>
+                        <span class="clock-label">SEG</span>
+                    </div>
+                </div>
+
+                <p class="event-message">
+                    Antes de conhece-la, Deus já a havia prometido ao meu coração. Quando a vi, os meus olhos reconheceram o que a minha alma gêmea, que vivia noutro lado do mundo. Ela é o desejo que Ele plantou em mim. 🎉
+                </p>
+
+                <div class="event-location">
+                    <strong>📍 Local:</strong> Rússia, Moscovo<br>
+                    Метро Юго-Западная или Университет дружбы народов<br>
+                    ул. Миклухо-Маклая, 3
+                </div>
+            </div>
+
+            <!-- Bloco 2: Confirmação de Presença -->
+            <div class="event-card">
+                <div class="event-icon">📝</div>
+                <h2 class="event-title">Confirmação da Presença</h2>
+                <p class="event-message-large">
+                    Para melhor organização do evento, precisamos confirmar sua presença.
+                </p>
+
+                <div class="info-box">
+                    <p class="info-title">Informações necessárias:</p>
+                    <ul class="info-list">
+                        <li>✦ Nome completo</li>
+                        <li>✦ Email para receber mennsagem de confirmação</li>
+                        <li> Mensagem especial (opcional)</li>
+                    </ul>
+                </div>
+
+                <button class="btn-confirm" onclick="openModal()">
+                    Confirmar Presença
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Formulário -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+
+            <!-- Lado esquerdo: Formulário -->
+            <div class="modal-form-side">
+                <div id="formContainer">
+                    <h2 class="modal-title">Confirmação de Presença</h2>
+                    <p class="modal-subtitle">Preencha os dados abaixo para confirmar sua presença</p>
+
+                    <form id="rsvpForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label>
+                                Nome Completo <span class="required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="nome"
+                                id="nome"
+                                required
+                                placeholder="Digite seu nome completo"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Email <span class="required">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                required
+                                placeholder="seu.email@exemplo.com"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Comparecimento <span class="required">*</span>
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="comparecimento" value="Sim, irei comparecer" required>
+                                    <span>Sim, irei comparecer</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="comparecimento" value="Infelizmente não poderei ir" required>
+                                    <span>Infelizmente não poderei ir</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mensagem para os Noivos (opcional)</label>
+                            <textarea
+                                name="mensagem"
+                                id="mensagem"
+                                placeholder="Deixe sua mensagem de carinho..."
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <span id="btnText">Enviar Confirmação</span>
+                            <div class="spinner" id="spinner"></div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Mensagem de Sucesso -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✅</div>
+                    <h3>Confirmação Enviada!</h3>
+                    <p>Obrigado por confirmar sua presença!<br>Estamos ansiosos para celebrar com você!</p>
+                    <p id="presente">💌 Enviamos um presentinho no seu email!</p>
+                    <button class="btn-confirm btn-modal-close" onclick="closeModal()">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lado direito: Foto e emojis -->
+            <div class="modal-photo-side">
+                <div class="modal-photo-bg"></div>
+                <div class="modal-emojis" id="modalEmojis"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script01.js"></script>
+</body>
+</html>
